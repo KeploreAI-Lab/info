@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Keplore Expertize — Industrial AI That Works</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0a0a0f;
+      --surface: #111118;
+      --surface2: #18181f;
+      --border: #2a2a35;
+      --text: #e8e8f0;
+      --muted: #7070a0;
+      --accent: #5b6af5;
+      --accent2: #8b5cf6;
+      --green: #22c55e;
+      --orange: #f97316;
+      --red: #ef4444;
+      --yellow: #eab308;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      font-size: 16px;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 16px 40px;
+      display: flex; justify-content: space-between; align-items: center;
+      background: rgba(10,10,15,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo { font-size: 18px; font-weight: 700; letter-spacing: -0.5px; }
+    .nav-logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 32px; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: 14px; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--text); }
+
+    /* SECTIONS */
+    section { padding: 100px 40px; max-width: 960px; margin: 0 auto; }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex; flex-direction: column; justify-content: center;
+      padding-top: 80px;
+      max-width: 960px; margin: 0 auto;
+    }
+    .hero-eyebrow {
+      font-size: 13px; font-weight: 600; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--accent);
+      margin-bottom: 24px;
+    }
+    .hero h1 {
+      font-size: clamp(40px, 6vw, 72px);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -2px;
+      margin-bottom: 32px;
+    }
+    .hero h1 .highlight {
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-sub {
+      font-size: 20px; color: var(--muted); max-width: 640px;
+      line-height: 1.7; margin-bottom: 48px;
+    }
+    .shift-box {
+      display: flex; gap: 16px; align-items: center;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 12px; padding: 24px 32px;
+      max-width: 640px;
+    }
+    .shift-item { text-align: center; flex: 1; }
+    .shift-item .label { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
+    .shift-item .value { font-size: 16px; font-weight: 600; line-height: 1.4; }
+    .shift-arrow { color: var(--accent); font-size: 24px; flex-shrink: 0; }
+    .shift-item.old .value { color: var(--muted); }
+    .shift-item.new .value { color: var(--text); }
+
+    /* HEADINGS */
+    h2 {
+      font-size: clamp(28px, 4vw, 42px);
+      font-weight: 800; letter-spacing: -1px;
+      margin-bottom: 16px; line-height: 1.1;
+    }
+    h2 .accent { color: var(--accent); }
+    .section-label {
+      font-size: 12px; font-weight: 600; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--accent);
+      margin-bottom: 16px; display: block;
+    }
+    .section-intro {
+      font-size: 18px; color: var(--muted); max-width: 680px;
+      line-height: 1.7; margin-bottom: 56px;
+    }
+
+    /* DIVIDER */
+    .divider { border: none; border-top: 1px solid var(--border); }
+
+    /* LIGHT VS HEAVY */
+    .task-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
+      margin-top: 40px;
+    }
+    .task-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 16px; padding: 32px;
+    }
+    .task-card.heavy { border-color: var(--accent); background: rgba(91,106,245,0.06); }
+    .task-card .tag {
+      display: inline-block; font-size: 11px; font-weight: 700;
+      letter-spacing: 1.5px; text-transform: uppercase;
+      padding: 4px 10px; border-radius: 4px; margin-bottom: 16px;
+    }
+    .task-card.light .tag { background: rgba(112,112,160,0.2); color: var(--muted); }
+    .task-card.heavy .tag { background: rgba(91,106,245,0.2); color: var(--accent); }
+    .task-card h3 { font-size: 20px; font-weight: 700; margin-bottom: 12px; }
+    .task-card p { font-size: 15px; color: var(--muted); line-height: 1.6; margin-bottom: 16px; }
+    .task-card ul { list-style: none; }
+    .task-card ul li {
+      font-size: 14px; color: var(--muted); padding: 6px 0;
+      border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 8px;
+    }
+    .task-card ul li:last-child { border-bottom: none; }
+    .task-card ul li::before { content: ''; display: block; width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+    .task-card.light ul li::before { background: var(--muted); }
+    .task-card.heavy ul li::before { background: var(--accent); }
+    .task-card .verdict {
+      margin-top: 20px; padding: 12px 16px;
+      border-radius: 8px; font-size: 14px; font-weight: 600;
+    }
+    .task-card.light .verdict { background: rgba(112,112,160,0.1); color: var(--muted); }
+    .task-card.heavy .verdict { background: rgba(91,106,245,0.15); color: var(--accent); }
+
+    /* SCALING LAW */
+    .reasons-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+      margin-top: 40px;
+    }
+    .reason-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 12px; padding: 28px;
+    }
+    .reason-num {
+      font-size: 11px; font-weight: 700; letter-spacing: 2px;
+      color: var(--accent); text-transform: uppercase; margin-bottom: 12px;
+    }
+    .reason-card h3 { font-size: 17px; font-weight: 700; margin-bottom: 10px; line-height: 1.3; }
+    .reason-card p { font-size: 14px; color: var(--muted); line-height: 1.6; }
+    .reason-card.primary { border-color: var(--accent2); background: rgba(139,92,246,0.06); grid-column: 1 / -1; }
+    .reason-card.primary h3 { font-size: 20px; }
+    .reason-card.primary p { font-size: 15px; }
+    .example-box {
+      margin-top: 16px; padding: 16px 20px;
+      background: var(--surface2); border-radius: 8px; border-left: 3px solid var(--red);
+    }
+    .example-box .label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+    .example-box p { font-size: 14px; color: var(--text); }
+
+    /* DATA COMPANY */
+    .data-hero {
+      background: linear-gradient(135deg, rgba(91,106,245,0.1), rgba(139,92,246,0.1));
+      border: 1px solid rgba(91,106,245,0.3);
+      border-radius: 20px; padding: 48px; margin-top: 40px; text-align: center;
+    }
+    .data-hero h3 { font-size: 32px; font-weight: 800; letter-spacing: -1px; margin-bottom: 16px; }
+    .data-hero p { font-size: 18px; color: var(--muted); max-width: 600px; margin: 0 auto 32px; line-height: 1.7; }
+    .flywheel {
+      display: flex; align-items: center; justify-content: center;
+      gap: 0; flex-wrap: wrap; margin-top: 32px;
+    }
+    .flywheel-step {
+      background: var(--surface2); border: 1px solid var(--border);
+      border-radius: 10px; padding: 16px 20px; text-align: center;
+      min-width: 160px;
+    }
+    .flywheel-step .icon { font-size: 24px; margin-bottom: 8px; }
+    .flywheel-step .text { font-size: 13px; font-weight: 600; color: var(--text); line-height: 1.4; }
+    .flywheel-arrow { color: var(--accent); font-size: 20px; padding: 0 12px; }
+
+    /* SCALE AI COMPARISON */
+    .compare-table {
+      width: 100%; border-collapse: collapse; margin-top: 40px;
+      border-radius: 12px; overflow: hidden;
+    }
+    .compare-table th {
+      padding: 16px 24px; text-align: left;
+      font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
+    }
+    .compare-table th:first-child { background: var(--surface2); color: var(--muted); width: 26%; }
+    .compare-table th.col-scale { background: rgba(112,112,160,0.15); color: var(--muted); }
+    .compare-table th.col-keplore { background: rgba(91,106,245,0.2); color: var(--accent); }
+    .compare-table td {
+      padding: 16px 24px; font-size: 14px; line-height: 1.5;
+      border-top: 1px solid var(--border);
+    }
+    .compare-table td:first-child { background: var(--surface2); color: var(--muted); font-weight: 600; font-size: 13px; }
+    .compare-table td.col-scale { background: rgba(112,112,160,0.05); color: var(--muted); }
+    .compare-table td.col-keplore { background: rgba(91,106,245,0.05); color: var(--text); }
+    .compare-table td.col-keplore strong { color: var(--accent); }
+    .win-badge {
+      display: inline-block; font-size: 11px; font-weight: 700;
+      background: rgba(34,197,94,0.15); color: var(--green);
+      padding: 2px 8px; border-radius: 4px; margin-left: 8px;
+    }
+
+    /* PHASES */
+    .phases { display: flex; gap: 24px; margin-top: 40px; }
+    .phase-card {
+      flex: 1; background: var(--surface); border: 1px solid var(--border);
+      border-radius: 16px; padding: 32px;
+    }
+    .phase-card.active { border-color: var(--green); background: rgba(34,197,94,0.05); }
+    .phase-num {
+      font-size: 11px; font-weight: 700; letter-spacing: 2px;
+      text-transform: uppercase; margin-bottom: 12px;
+    }
+    .phase-card.active .phase-num { color: var(--green); }
+    .phase-card:not(.active) .phase-num { color: var(--muted); }
+    .phase-card h3 { font-size: 20px; font-weight: 700; margin-bottom: 12px; }
+    .phase-card p { font-size: 14px; color: var(--muted); line-height: 1.6; margin-bottom: 16px; }
+    .phase-card .phase-insight {
+      padding: 12px 16px; border-radius: 8px; font-size: 13px; line-height: 1.5;
+    }
+    .phase-card.active .phase-insight { background: rgba(34,197,94,0.1); color: var(--green); }
+    .phase-card:not(.active) .phase-insight { background: rgba(91,106,245,0.1); color: var(--accent); }
+
+    /* KEPLER */
+    .kepler-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 40px; }
+    .kepler-col h3 { font-size: 16px; font-weight: 700; margin-bottom: 12px; color: var(--muted); }
+    .kepler-col p { font-size: 14px; color: var(--muted); line-height: 1.7; margin-bottom: 16px; }
+    .kepler-col .analogy {
+      background: var(--surface2); border: 1px solid var(--border);
+      border-radius: 10px; padding: 20px;
+    }
+    .kepler-col .analogy .row {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 14px;
+    }
+    .kepler-col .analogy .row:last-child { border-bottom: none; }
+    .kepler-col .analogy .row .k { color: var(--muted); }
+    .kepler-col .analogy .row .v { color: var(--text); font-weight: 600; text-align: right; max-width: 55%; }
+
+    /* FOOTER */
+    footer {
+      padding: 60px 40px; text-align: center;
+      border-top: 1px solid var(--border);
+      color: var(--muted); font-size: 14px;
+    }
+    footer .name { font-size: 20px; font-weight: 800; color: var(--text); margin-bottom: 8px; }
+
+    /* RESPONSIVE */
+    @media (max-width: 700px) {
+      nav { padding: 14px 20px; }
+      .nav-links { display: none; }
+      section { padding: 80px 20px; }
+      .hero { padding: 100px 20px 60px; }
+      .task-grid, .reasons-grid, .kepler-grid, .phases { grid-template-columns: 1fr; flex-direction: column; }
+      .shift-box { flex-direction: column; gap: 12px; }
+      .shift-arrow { transform: rotate(90deg); }
+      .flywheel { flex-direction: column; gap: 8px; }
+      .flywheel-arrow { transform: rotate(90deg); }
+      .reason-card.primary { grid-column: auto; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Ke<span>plore</span></div>
+  <div class="nav-links">
+    <a href="#problem">Problem</a>
+    <a href="#why-not-scaling">Why AI Fails</a>
+    <a href="#data-company">Data Company</a>
+    <a href="#vs-scaleai">vs. Scale AI</a>
+    <a href="#phases">Business Model</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div style="padding: 0 40px;">
+  <div class="hero">
+    <div class="hero-eyebrow">Keplore Expertize</div>
+    <h1>AI that <span class="highlight">does</span> industrial work.<br>Not just talks about it.</h1>
+    <p class="hero-sub">
+      The shift is underway: from AI as assistant to AI as executor. Industrial companies
+      need agents that can build systems, deploy models, and integrate with hardware —
+      not just answer questions or generate reports.
+    </p>
+    <div class="shift-box">
+      <div class="shift-item old">
+        <div class="label">Before</div>
+        <div class="value">AI assists<br>Human executes</div>
+      </div>
+      <div class="shift-arrow">→</div>
+      <div class="shift-item new">
+        <div class="label">Now</div>
+        <div class="value">AI executes<br>Human oversees</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider" />
+
+<!-- PROBLEM: LIGHT VS HEAVY -->
+<section id="problem">
+  <span class="section-label">The Problem</span>
+  <h2>The light tasks are <span class="accent">already solved.</span><br>The heavy ones aren't.</h2>
+  <p class="section-intro">
+    Industrial companies have tools for analysis, diagnosis, and workflow automation.
+    Those are not the bottleneck. The bottleneck is execution — building and deploying
+    solutions that actually run on real hardware.
+  </p>
+  <div class="task-grid">
+    <div class="task-card light">
+      <span class="tag">Light Tasks — Solved</span>
+      <h3>Information Processing</h3>
+      <p>What Aitomatic, Snowflake, and most "enterprise AI" companies do. Valuable. Not the core work.</p>
+      <ul>
+        <li>Root cause analysis</li>
+        <li>Document review &amp; audit trails</li>
+        <li>Supply chain risk reports</li>
+        <li>Workflow automation</li>
+        <li>IoT data insights</li>
+        <li>Heat exchanger diagnostics</li>
+      </ul>
+      <div class="verdict">Output: a report. A recommendation. Text.</div>
+    </div>
+    <div class="task-card heavy">
+      <span class="tag">Heavy Tasks — Unsolved</span>
+      <h3>Execution &amp; Solution Building</h3>
+      <p>The actual deliverable. What industrial engineers spend most of their time on. What Keplore solves.</p>
+      <ul>
+        <li>Build AI vision systems for production lines</li>
+        <li>Deploy &amp; integrate with hardware APIs</li>
+        <li>Calibrate against real performance signals</li>
+        <li>Configure computing environments</li>
+        <li>Validate &amp; maintain in production</li>
+        <li>Adapt models to new equipment</li>
+      </ul>
+      <div class="verdict">Output: a working system. Running on the machine.</div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- WHY SCALING DOESN'T WORK -->
+<section id="why-not-scaling">
+  <span class="section-label">Why Generic AI Fails</span>
+  <h2>Scaling law is <span class="accent">structurally blocked</span><br>in industrial domains.</h2>
+  <p class="section-intro">
+    The obvious solution — train models on more industrial data — doesn't work.
+    Four reasons, the first being the most fundamental.
+  </p>
+  <div class="reasons-grid">
+    <div class="reason-card primary">
+      <div class="reason-num">Reason 01 — Most Fundamental</div>
+      <h3>Models learn patterns. Industrial tasks require principles.</h3>
+      <p>
+        Large models abstract repeat patterns from data — whether text or images. Pattern learning works
+        for language generation, where approximate output is acceptable. It does not work for industrial
+        execution, where correctness depends on precision, mathematical rules, and physical laws.
+      </p>
+      <div class="example-box">
+        <div class="label">Classic failure case</div>
+        <p>Ask a large model: is <strong>1.13</strong> or <strong>1.8</strong> larger? Pattern-trained
+        models often answer 1.13 — because "more digits = larger number" dominates over
+        actual numerical reasoning. In industrial settings, this failure mode causes miscalibrated
+        machines, failed deployments, and safety incidents. More training data gives you more patterns.
+        It does not give you principles.</p>
+      </div>
+    </div>
+    <div class="reason-card">
+      <div class="reason-num">Reason 02</div>
+      <h3>Not enough industrial data exists.</h3>
+      <p>
+        Calibration parameters, PLC integration quirks, factory safety protocols —
+        none of this is in any public training corpus. Collecting it is years of work
+        per customer, per domain.
+      </p>
+    </div>
+    <div class="reason-card">
+      <div class="reason-num">Reason 03</div>
+      <h3>The data types are wrong.</h3>
+      <p>
+        Industrial expertise lives in video demos, physical procedures, hardware
+        configuration, and proprietary business logic. Text-based training cannot
+        capture the form in which this knowledge actually exists.
+      </p>
+    </div>
+    <div class="reason-card">
+      <div class="reason-num">Reason 04</div>
+      <h3>Per-customer training is an operational nightmare.</h3>
+      <p>
+        Fine-tuning a model on proprietary data per customer — then managing drift,
+        retraining on updates, maintaining per-customer versions — is prohibitively
+        expensive and slow.
+      </p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- DATA COMPANY -->
+<section id="data-company">
+  <span class="section-label">Our Approach</span>
+  <h2>Keplore is a <span class="accent">data company.</span><br>The data is executable.</h2>
+  <p class="section-intro">
+    Skills are not documents. They are structured, expert-verified, executable packages —
+    code that runs, calibration data that gets applied, domain instructions that guide
+    the agent. The agent doesn't look up the procedure. It runs it.
+  </p>
+
+  <div class="data-hero">
+    <h3>Skills = Executable Expert Knowledge</h3>
+    <p>
+      Previous approaches built bigger dictionaries. Keplore makes agents that can
+      actually work — using expertise knowledge as executable infrastructure, not as
+      reference material.
+    </p>
+    <div style="display: flex; justify-content: center; gap: 32px; margin-top: 24px; flex-wrap: wrap;">
+      <div style="text-align: center;">
+        <div style="font-size: 13px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;">Each skill contains</div>
+        <div style="display: flex; gap: 12px;">
+          <div style="background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; padding: 12px 18px; font-size: 14px; font-weight: 600;">SKILL.md<br><span style="font-size: 12px; color: var(--muted); font-weight: 400;">Interface &amp; instructions</span></div>
+          <div style="background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; padding: 12px 18px; font-size: 14px; font-weight: 600;">scripts/<br><span style="font-size: 12px; color: var(--muted); font-weight: 400;">Executable code</span></div>
+          <div style="background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; padding: 12px 18px; font-size: 14px; font-weight: 600;">data/<br><span style="font-size: 12px; color: var(--muted); font-weight: 400;">Calibration &amp; config</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="flywheel" style="margin-top: 48px;">
+    <div class="flywheel-step">
+      <div class="icon">🏭</div>
+      <div class="text">Technical engineers<br>enter factories</div>
+    </div>
+    <div class="flywheel-arrow">→</div>
+    <div class="flywheel-step">
+      <div class="icon">🧱</div>
+      <div class="text">Skills built &amp;<br>validated on real equipment</div>
+    </div>
+    <div class="flywheel-arrow">→</div>
+    <div class="flywheel-step">
+      <div class="icon">⚡</div>
+      <div class="text">Agents invoke skills<br>to do real work</div>
+    </div>
+    <div class="flywheel-arrow">→</div>
+    <div class="flywheel-step">
+      <div class="icon">📈</div>
+      <div class="text">Usage validates skills<br>library appreciates</div>
+    </div>
+    <div class="flywheel-arrow">→</div>
+    <div class="flywheel-step">
+      <div class="icon">🔄</div>
+      <div class="text">AI accelerates<br>next skill build</div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- VS SCALE AI -->
+<section id="vs-scaleai">
+  <span class="section-label">Competitive Advantage</span>
+  <h2>Like Scale AI —<br>but <span class="accent">fundamentally better.</span></h2>
+  <p class="section-intro">
+    Scale AI built a business packaging data for model training. Keplore packages
+    executable skills for agent inference. Same insight, one layer up — with a
+    much better business model.
+  </p>
+
+  <table class="compare-table">
+    <thead>
+      <tr>
+        <th></th>
+        <th class="col-scale">Scale AI</th>
+        <th class="col-keplore">Keplore</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Product</td>
+        <td class="col-scale">Labeled training datasets</td>
+        <td class="col-keplore"><strong>Executable skill packages</strong> (code + data + interface)</td>
+      </tr>
+      <tr>
+        <td>Used for</td>
+        <td class="col-scale">Training model weights</td>
+        <td class="col-keplore"><strong>Agent inference</strong> — invoked at runtime, every time</td>
+      </tr>
+      <tr>
+        <td>Consumption</td>
+        <td class="col-scale">One-time — data trains a model, then it's done</td>
+        <td class="col-keplore"><strong>Persistent</strong> — each skill invocation delivers value <span class="win-badge">Better</span></td>
+      </tr>
+      <tr>
+        <td>Value over time</td>
+        <td class="col-scale">Static — labeled data doesn't improve after collection</td>
+        <td class="col-keplore"><strong>Appreciates</strong> — skills validated by real production usage get more valuable <span class="win-badge">Better</span></td>
+      </tr>
+      <tr>
+        <td>Business model</td>
+        <td class="col-scale">COGS model — sell data, must collect more to sell again</td>
+        <td class="col-keplore"><strong>SaaS model</strong> — build skill once, sell access indefinitely. Near-zero marginal cost. <span class="win-badge">Better</span></td>
+      </tr>
+      <tr>
+        <td>Workforce</td>
+        <td class="col-scale">Large-scale click-labor for annotation</td>
+        <td class="col-keplore"><strong>Technical engineers</strong> with coding + domain knowledge — compound with experience</td>
+      </tr>
+      <tr>
+        <td>Self-acceleration</td>
+        <td class="col-scale">No — labeling doesn't make labeling faster</td>
+        <td class="col-keplore"><strong>Yes</strong> — Keplore's own skills accelerate building new skills <span class="win-badge">Better</span></td>
+      </tr>
+      <tr>
+        <td>Moat</td>
+        <td class="col-scale">Scale and speed of data collection</td>
+        <td class="col-keplore"><strong>Skills library + production-validated expertise</strong> — impossible to replicate without factory access</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div style="margin-top: 32px; padding: 28px 32px; background: var(--surface); border: 1px solid var(--border); border-radius: 12px;">
+    <div style="font-size: 13px; color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px;">The key insight</div>
+    <p style="font-size: 17px; line-height: 1.7; color: var(--text);">
+      Scale AI's training data gets consumed once. Keplore's skills get invoked indefinitely.
+      A calibration skill built for a Chinese manufacturer today will be invoked on
+      hundreds of machines for years. Every invocation is revenue. Every invocation is
+      also validation — making the skill more valuable for the next customer.
+    </p>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- BUSINESS PHASES -->
+<section id="phases">
+  <span class="section-label">Business Model</span>
+  <h2>Two phases.<br>One <span class="accent">compounding asset.</span></h2>
+  <p class="section-intro">
+    The delivery work and the data business are not in tension.
+    Phase 1 funds and builds Phase 2. Every project is an investment in the library.
+  </p>
+  <div class="phases">
+    <div class="phase-card active">
+      <div class="phase-num">Phase 1 — Now</div>
+      <h3>Deliver Solutions</h3>
+      <p>
+        Work directly with industrial customers to build and deploy AI solutions.
+        Charge for delivery — but margin is not the goal. The goal is building a
+        validated skills library that compounds.
+      </p>
+      <p>
+        Because Keplore isn't optimizing for delivery margin, it can take engagements
+        competitors can't afford to, move into verticals others won't enter, and reuse
+        skills from previous projects to move faster than anyone starting from scratch.
+      </p>
+      <div class="phase-insight">
+        Current customers: China manufacturer (magnetic defect detection), Geely EV R&D, Idaho robotics SI.
+      </div>
+    </div>
+    <div class="phase-card">
+      <div class="phase-num">Phase 2 — Library Monetization</div>
+      <h3>Sell the Skills</h3>
+      <p>
+        Once the library has depth and breadth, sell access — subscription,
+        per-skill licensing, or per-domain packages. At this point, the marginal cost
+        of serving an additional customer is near zero.
+      </p>
+      <p>
+        Phase 1 customers funded the asset. Phase 2 is when the business becomes a
+        software business. Other AI companies — including light-task platforms like
+        Aitomatic — can buy Keplore skills to add execution capability without
+        building domain expertise from scratch.
+      </p>
+      <div class="phase-insight">
+        The skills library becomes infrastructure. Keplore becomes the data layer for industrial AI execution.
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- KEPLER -->
+<section>
+  <span class="section-label">Why "Keplore"</span>
+  <h2>Grounded knowledge<br>makes <span class="accent">reliable predictions.</span></h2>
+  <p class="section-intro">
+    The name is a tribute to Johannes Kepler — who proved that precise observational
+    data, not pure reasoning, is what makes scientific laws actually work.
+  </p>
+  <div class="kepler-grid">
+    <div class="kepler-col">
+      <h3>The historical parallel</h3>
+      <p>
+        Kepler derived his three laws of planetary motion using precise observations
+        collected by Tycho Brahe — who spent decades building sophisticated instruments
+        and measuring planetary positions with then-unprecedented accuracy.
+      </p>
+      <p>
+        Before Kepler, astronomers relied on pure geometric reasoning (Ptolemy's epicycles,
+        Copernicus's circles). Logically coherent. Wrong. Because they weren't grounded
+        in precise measurement.
+      </p>
+      <p>
+        Kepler's laws work — can predict where a planet will be — because they were
+        derived from real data and constrained by real observations. The data was decisive.
+      </p>
+    </div>
+    <div class="kepler-col">
+      <h3>The Keplore analogy</h3>
+      <div class="analogy">
+        <div class="row"><span class="k">Tycho Brahe</span><span class="v">Keplore's technical workforce in factories</span></div>
+        <div class="row"><span class="k">Astronomical instruments</span><span class="v">Skill packages (code + data + interface)</span></div>
+        <div class="row"><span class="k">Precise observations</span><span class="v">Expert-verified, production-validated skills</span></div>
+        <div class="row"><span class="k">Pure geometric reasoning</span><span class="v">Generic AI pattern-matching</span></div>
+        <div class="row"><span class="k">Kepler's laws</span><span class="v">Reliable industrial AI execution</span></div>
+        <div class="row"><span class="k">Predicts planetary positions</span><span class="v">Builds systems that work in production</span></div>
+      </div>
+      <p style="margin-top: 16px; font-size: 14px;">
+        Generic AI reasoning alone — pattern-matching over public data — produces
+        plausible output that cannot be trusted in industrial production.
+        Keplore's skills are the grounding that makes the agent reliable.
+      </p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="name">Keplore Expertize</div>
+  <p>Industrial AI that executes. Built on skills. Grounded in domain expertise.</p>
+</footer>
+
+</body>
+</html>
