@@ -623,6 +623,64 @@
     .thesis-card.featured h3 { font-size: 22px; }
     .thesis-card.featured p { font-size: 15px; }
 
+    /* ── REVENUE PHASES ── */
+    .revenue-phases {
+      display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px;
+      margin-top: 48px;
+    }
+    .phase-card {
+      background: var(--surface); border: 1px solid var(--border2);
+      border-radius: 16px; padding: 32px;
+      display: flex; flex-direction: column;
+    }
+    .phase-card.phase-now  { border-color: rgba(16,185,129,0.35); background: rgba(16,185,129,0.03); }
+    .phase-card.phase-exec { border-color: rgba(79,127,255,0.3);  background: rgba(79,127,255,0.04); }
+    .phase-card.phase-build {
+      border-color: rgba(245,158,11,0.4);
+      background: linear-gradient(135deg, rgba(245,158,11,0.07), rgba(251,191,36,0.03));
+    }
+    .phase-label {
+      font-size: 11px; font-weight: 700; letter-spacing: 2px;
+      text-transform: uppercase; margin-bottom: 14px;
+    }
+    .phase-now  .phase-label { color: var(--green); }
+    .phase-exec .phase-label { color: var(--accent); }
+    .phase-build .phase-label { color: #f59e0b; }
+    .phase-card h3 { font-size: 19px; font-weight: 800; margin-bottom: 10px; line-height: 1.3; }
+    .phase-build h3 { color: #fbbf24; }
+    .phase-card > p { font-size: 14px; color: var(--muted2); line-height: 1.6; margin-bottom: 14px; }
+    .phase-streams {
+      margin-top: auto; border-top: 1px solid var(--border); padding-top: 14px;
+      display: flex; flex-direction: column; gap: 8px;
+    }
+    .stream-item {
+      display: flex; align-items: flex-start; gap: 8px;
+      font-size: 13px; color: var(--muted2); line-height: 1.45;
+    }
+    .stream-dot {
+      width: 5px; height: 5px; border-radius: 50%;
+      flex-shrink: 0; margin-top: 6px;
+    }
+    .phase-now  .stream-dot { background: var(--green); }
+    .phase-exec .stream-dot { background: var(--accent); }
+    .phase-build .stream-dot { background: #f59e0b; }
+    .phase-insight {
+      margin-top: 16px; padding: 11px 14px; border-radius: 8px;
+      font-size: 13px; line-height: 1.5; font-weight: 600;
+    }
+    .phase-now  .phase-insight { background: rgba(16,185,129,0.1);  color: var(--green); }
+    .phase-exec .phase-insight { background: rgba(79,127,255,0.1);  color: var(--accent); }
+    .phase-build .phase-insight { background: rgba(245,158,11,0.1); color: #f59e0b; }
+    .revenue-flywheel {
+      margin-top: 28px; padding: 22px 32px;
+      background: linear-gradient(135deg, rgba(79,127,255,0.06), rgba(124,92,252,0.04));
+      border: 1px solid rgba(79,127,255,0.18); border-radius: 14px;
+      display: flex; align-items: center; gap: 20px;
+    }
+    .flywheel-icon { font-size: 26px; color: var(--accent); flex-shrink: 0; line-height: 1; }
+    .flywheel-text { font-size: 14px; color: var(--muted2); line-height: 1.65; }
+    .flywheel-text strong { color: var(--text); }
+
     /* ── TEAM ── */
     .team-grid {
       display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;
@@ -713,6 +771,7 @@
       .paradigm-grid { grid-template-columns: 1fr; }
       .reasons-grid { grid-template-columns: 1fr; }
       .traction-grid { grid-template-columns: 1fr; }
+      .revenue-phases { grid-template-columns: 1fr; }
       .thesis-grid { grid-template-columns: 1fr; }
       .thesis-card.featured { grid-column: auto; }
       .team-grid { grid-template-columns: 1fr 1fr; }
@@ -744,6 +803,7 @@
     <a href="#benchmark">Benchmark</a>
     <a href="#architecture">Framework</a>
     <a href="#traction">Traction</a>
+    <a href="#revenue">Revenue</a>
     <a href="#contact" class="nav-cta">Talk to Us</a>
   </div>
 </nav>
@@ -1340,6 +1400,80 @@
 
 <hr class="divider" />
 
+<!-- REVENUE MODEL -->
+<section id="revenue">
+  <span class="section-label reveal">Revenue Model</span>
+  <h2 class="section-h2 reveal">
+    Two phases.<br>
+    <span class="gradient">Three revenue streams.</span>
+  </h2>
+  <p class="section-intro reveal">
+    Phase 1 funds Phase 2. Every delivery project builds the skills library.
+    When the library has depth, we sell access — as infrastructure, not consulting.
+    Both execution and building are sellable, like SaaS.
+  </p>
+
+  <div class="revenue-phases reveal">
+
+    <div class="phase-card phase-now">
+      <div class="phase-label">Phase 1 · Now</div>
+      <h3>Deliver & Build</h3>
+      <p>
+        Deploy industrial AI for enterprise customers. Charge for delivery.
+        The real output isn't the project — it's the validated skills library accumulating underneath it.
+      </p>
+      <div class="phase-streams">
+        <div class="stream-item"><span class="stream-dot"></span>Project contracts: $5k–$50k per engagement</div>
+        <div class="stream-item"><span class="stream-dot"></span>Ongoing integration &amp; support retainers</div>
+        <div class="stream-item"><span class="stream-dot"></span>Each project deposits skills into the library</div>
+      </div>
+      <div class="phase-insight">3 paying customers. $200k ARR potential in Year 1.</div>
+    </div>
+
+    <div class="phase-card phase-exec">
+      <div class="phase-label">Phase 2A · Execution Platform</div>
+      <h3>Skill Execution SaaS</h3>
+      <p>
+        Sell access to the PhysicalFlow Runtime as managed infrastructure.
+        Customers trace, orchestrate, and invoke expert skills — without building domain knowledge from scratch.
+      </p>
+      <div class="phase-streams">
+        <div class="stream-item"><span class="stream-dot"></span>Per-invocation pricing (metered API)</div>
+        <div class="stream-item"><span class="stream-dot"></span>Domain-package subscriptions (EV, robotics, CNC…)</div>
+        <div class="stream-item"><span class="stream-dot"></span>Skill tracing &amp; orchestration as managed service</div>
+      </div>
+      <div class="phase-insight">Marginal cost → 0. Each new customer is near-pure margin.</div>
+    </div>
+
+    <div class="phase-card phase-build">
+      <div class="phase-label">Phase 2B · Builder Ecosystem</div>
+      <h3>Skill Building SaaS</h3>
+      <p>
+        Enterprise teams build, optimize, and publish their own skills on the PhysMind platform.
+        We sell the toolchain. Their domain expertise becomes monetizable IP.
+      </p>
+      <div class="phase-streams">
+        <div class="stream-item"><span class="stream-dot"></span>Skill optimization tooling (per-seat SaaS)</div>
+        <div class="stream-item"><span class="stream-dot"></span>Private namespaces + skills marketplace listings</div>
+        <div class="stream-item"><span class="stream-dot"></span>Revenue share on third-party skill sales</div>
+      </div>
+      <div class="phase-insight">We become the platform — not just the library.</div>
+    </div>
+
+  </div>
+
+  <div class="revenue-flywheel reveal">
+    <div class="flywheel-icon">⟳</div>
+    <div class="flywheel-text">
+      <strong>The compounding loop:</strong> Phase 1 delivery builds the library →
+      library depth enables Phase 2 platform sales → platform scale funds more library depth →
+      competitors face a growing gap they cannot close by scaling base models alone.
+    </div>
+  </div>
+</section>
+
+<hr class="divider" />
+
 <!-- INVESTMENT THESIS -->
 <section id="thesis">
   <span class="section-label reveal">Investment Thesis</span>
@@ -1389,12 +1523,11 @@
 
     <div class="thesis-card">
       <div class="num">04</div>
-      <h3>Two revenue phases: service now, platform at scale.</h3>
+      <h3>Two phases, three revenue streams — execution and building are both sellable.</h3>
       <p>
-        Phase 1 (now): deliver industrial AI solutions to enterprise customers.
-        Charge for work; the skills library is the real asset being built.
-        Phase 2: sell library access — subscription, per-skill licensing, per-domain packages.
-        Phase 2 marginal cost approaches zero.
+        Phase 1 funds Phase 2. Phase 2 has three levers: project delivery, Skill Execution SaaS
+        (PhysicalFlow Runtime, metered per invocation), and Skill Building SaaS (enterprise tooling to
+        create and monetize their own skills). Marginal cost approaches zero as the library scales.
       </p>
     </div>
   </div>
