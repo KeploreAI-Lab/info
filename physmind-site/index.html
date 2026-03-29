@@ -766,6 +766,71 @@
 
 <hr class="divider" />
 
+<!-- WHY SCALING FAILS -->
+<section id="why">
+  <span class="section-label reveal">Why Generic AI Fails</span>
+  <h2 class="section-h2 reveal">
+    Four structural reasons scaling<br>
+    <span class="accent">cannot close the gap.</span>
+  </h2>
+  <p class="section-intro reveal">
+    The obvious path — train larger models on more industrial data — is blocked.
+    Not by compute. By the fundamental nature of industrial knowledge.
+  </p>
+
+  <div class="reasons-grid reveal">
+    <div class="reason-card primary">
+      <div class="reason-num">Reason 01 — Most Fundamental</div>
+      <h3>Models learn patterns. Industrial work requires principles.</h3>
+      <p>
+        Large models abstract repeat patterns from data. Pattern learning works for language
+        generation, where approximate output is acceptable. It does not work for industrial
+        execution, where correctness depends on precision, physical laws, and mathematical rules.
+        Scaling gives you better pattern matching. It cannot give you physical understanding.
+      </p>
+      <div class="example-box">
+        <div class="label">Classic failure case</div>
+        <p>Ask a frontier model: is <strong>1.13</strong> or <strong>1.8</strong> larger?
+        Pattern-trained models often answer 1.13 — "more digits = larger number" dominates.
+        In industrial calibration, this failure causes miscalibrated machines, failed deployments,
+        and safety incidents. More data gives more patterns. Not principles.</p>
+      </div>
+    </div>
+
+    <div class="reason-card">
+      <div class="reason-num">Reason 02</div>
+      <h3>Not enough industrial data exists.</h3>
+      <p>
+        Calibration parameters, PLC integration quirks, factory safety protocols, machine-specific
+        thresholds — none of this appears in any public training corpus. Collecting it
+        is years of work per customer, per domain. The data gap is structural.
+      </p>
+    </div>
+
+    <div class="reason-card">
+      <div class="reason-num">Reason 03</div>
+      <h3>The data types are wrong.</h3>
+      <p>
+        Industrial expertise lives in physical procedures, hardware-specific configuration,
+        proprietary business logic, and operational intuition. Text-based training data
+        cannot capture the form in which this knowledge actually exists.
+      </p>
+    </div>
+
+    <div class="reason-card">
+      <div class="reason-num">Reason 04</div>
+      <h3>Per-customer fine-tuning is operationally impossible.</h3>
+      <p>
+        Fine-tuning a model on proprietary data per customer — then managing drift, retraining
+        on updates, and maintaining per-customer model versions — is prohibitively expensive,
+        slow, and creates IP liability. Not viable at scale.
+      </p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider" />
+
 <!-- BENCHMARK -->
 <section id="benchmark">
   <span class="section-label reveal">Industrial Agent Benchmark</span>
@@ -851,71 +916,6 @@
     of real deployments at Geely R&amp;D, China defect detection manufacturer, and Idaho robotics SI.
     The Industrial Agent Benchmark has not yet been publicly released.
   </p>
-</section>
-
-<hr class="divider" />
-
-<!-- WHY SCALING FAILS -->
-<section id="why">
-  <span class="section-label reveal">Why Generic AI Fails</span>
-  <h2 class="section-h2 reveal">
-    Four structural reasons scaling<br>
-    <span class="accent">cannot close the gap.</span>
-  </h2>
-  <p class="section-intro reveal">
-    The obvious path — train larger models on more industrial data — is blocked.
-    Not by compute. By the fundamental nature of industrial knowledge.
-  </p>
-
-  <div class="reasons-grid reveal">
-    <div class="reason-card primary">
-      <div class="reason-num">Reason 01 — Most Fundamental</div>
-      <h3>Models learn patterns. Industrial work requires principles.</h3>
-      <p>
-        Large models abstract repeat patterns from data. Pattern learning works for language
-        generation, where approximate output is acceptable. It does not work for industrial
-        execution, where correctness depends on precision, physical laws, and mathematical rules.
-        Scaling gives you better pattern matching. It cannot give you physical understanding.
-      </p>
-      <div class="example-box">
-        <div class="label">Classic failure case</div>
-        <p>Ask a frontier model: is <strong>1.13</strong> or <strong>1.8</strong> larger?
-        Pattern-trained models often answer 1.13 — "more digits = larger number" dominates.
-        In industrial calibration, this failure causes miscalibrated machines, failed deployments,
-        and safety incidents. More data gives more patterns. Not principles.</p>
-      </div>
-    </div>
-
-    <div class="reason-card">
-      <div class="reason-num">Reason 02</div>
-      <h3>Not enough industrial data exists.</h3>
-      <p>
-        Calibration parameters, PLC integration quirks, factory safety protocols, machine-specific
-        thresholds — none of this appears in any public training corpus. Collecting it
-        is years of work per customer, per domain. The data gap is structural.
-      </p>
-    </div>
-
-    <div class="reason-card">
-      <div class="reason-num">Reason 03</div>
-      <h3>The data types are wrong.</h3>
-      <p>
-        Industrial expertise lives in physical procedures, hardware-specific configuration,
-        proprietary business logic, and operational intuition. Text-based training data
-        cannot capture the form in which this knowledge actually exists.
-      </p>
-    </div>
-
-    <div class="reason-card">
-      <div class="reason-num">Reason 04</div>
-      <h3>Per-customer fine-tuning is operationally impossible.</h3>
-      <p>
-        Fine-tuning a model on proprietary data per customer — then managing drift, retraining
-        on updates, and maintaining per-customer model versions — is prohibitively expensive,
-        slow, and creates IP liability. Not viable at scale.
-      </p>
-    </div>
-  </div>
 </section>
 
 <hr class="divider" />
